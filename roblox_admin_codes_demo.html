@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roblox Admin Codes</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#070707;color:#fff;font-family:Arial,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px}
+.app{width:min(470px,100%);background:#141414;border:1px solid #333;border-radius:24px;padding:20px;box-shadow:0 0 35px #000}
+.bar{height:9px;background:#e00000;border-radius:99px;box-shadow:0 0 20px #e00000;margin-bottom:20px}
+h1{text-align:center;margin:0;font-size:25px}.desc{text-align:center;color:#aaa;margin:8px 0 20px}
+input{width:100%;padding:15px;background:#080808;border:1px solid #444;border-radius:13px;color:white;font-size:17px;outline:none}
+button{width:100%;padding:14px;border:0;border-radius:13px;margin-top:12px;font-size:17px;font-weight:bold}
+.red{background:#e00000;color:#fff}.dark{background:#292929;color:#fff}.box{display:none;margin-top:18px;padding:15px;border:1px solid #333;border-radius:15px;background:#080808}
+.code{direction:ltr;text-align:left;font-family:monospace;color:#67ff67;background:#000;border-radius:10px;padding:14px;word-break:break-all}
+.msg{text-align:center;color:#72ff72;min-height:20px;margin-top:8px}.warning{font-size:12px;color:#888;line-height:1.6;margin-top:14px}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="bar"></div>
+<h1>Roblox Admin Codes</h1>
+<div class="desc">واجهة أكواد تجريبية — ليست خدمة Robux حقيقية</div>
+<input id="user" placeholder="اكتب اسم حساب Roblox">
+<button class="red" onclick="makeCode()">🔑 أكواد Admin</button>
+<div class="box" id="box">
+<div style="margin-bottom:9px">الكود التجريبي:</div>
+<div class="code" id="code"></div>
+<button class="dark" onclick="copyCode()">📋 نسخ الكود</button>
+<div class="msg" id="msg"></div>
+</div>
+<button class="dark" onclick="resetPage()">مسح</button>
+<div class="warning">لا تدخل كلمة السر أو رمز التحقق. هذا الموقع يولّد كودًا تجريبيًا للواجهة فقط ولا يمنح Robux أو صلاحية Admin فعلية في Roblox.</div>
+</div>
+<script>
+function makeCode(){
+ const u=document.getElementById('user').value.trim();
+ if(!u){alert('اكتب اسم الحساب أولاً');return}
+ const rand=Math.random().toString(36).slice(2,8).toUpperCase();
+ document.getElementById('code').textContent='DEMO-ADMIN-'+u.replace(/[^a-zA-Z0-9_-]/g,'').slice(0,16)+'-'+rand;
+ document.getElementById('box').style.display='block';
+ document.getElementById('msg').textContent='';
+}
+async function copyCode(){
+ try{await navigator.clipboard.writeText(document.getElementById('code').textContent);document.getElementById('msg').textContent='تم نسخ الكود ✅'}
+ catch(e){document.getElementById('msg').textContent='انسخ الكود يدويًا.'}
+}
+function resetPage(){document.getElementById('user').value='';document.getElementById('box').style.display='none'}
+</script>
+</body>
+</html>
