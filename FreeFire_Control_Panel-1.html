@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Free Fire Control Panel</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{min-height:100vh;background:#080808;color:#fff;display:flex;justify-content:center;align-items:center;padding:15px}
+.panel{width:390px;max-width:100%;background:#111;border:2px solid #333;border-radius:22px;padding:18px;box-shadow:0 0 30px #000}
+.header{text-align:center;padding:15px;border-radius:15px;background:#181818;margin-bottom:15px}
+.header h1{font-size:23px;margin-bottom:7px}.status{font-size:13px;color:#aaa}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button{border:1px solid #444;background:#1b1b1b;color:#fff;padding:15px 8px;border-radius:12px;font-size:14px;cursor:pointer}
+button:active{transform:scale(.95)}button.active{background:#292929;border-color:#aaa}
+.log{margin-top:15px;background:#080808;border:1px solid #333;border-radius:12px;padding:12px;min-height:100px;max-height:150px;overflow:auto;font-size:12px;color:#bbb}
+.footer{margin-top:15px;text-align:center;font-size:11px;color:#777}
+</style>
+</head>
+<body>
+<div class="panel">
+<div class="header"><h1>FREE FIRE PANEL</h1><div class="status" id="status">لوحة محاكاة مستقلة</div></div>
+<div class="grid">
+<button onclick="toggle(this,'X-Ray')">X-Ray<br><small>محاكاة</small></button>
+<button onclick="toggle(this,'Head Mode')">Head Mode<br><small>محاكاة</small></button>
+<button onclick="toggle(this,'One Tap')">One Tap<br><small>محاكاة</small></button>
+<button onclick="toggle(this,'Fly Mode')">Fly Mode<br><small>محاكاة</small></button>
+<button onclick="toggle(this,'Player Radar')">Player Radar<br><small>محاكاة</small></button>
+<button onclick="toggle(this,'Aim Mode')">Aim Mode<br><small>محاكاة</small></button>
+<button onclick="toggle(this,'Speed')">Speed<br><small>محاكاة</small></button>
+<button onclick="toggle(this,'No Recoil')">No Recoil<br><small>محاكاة</small></button>
+<button onclick="toggle(this,'ESP')">ESP<br><small>محاكاة</small></button>
+<button onclick="toggle(this,'Night Vision')">Night Vision<br><small>محاكاة</small></button>
+<button onclick="toggle(this,'Auto Aim')">Auto Aim<br><small>محاكاة</small></button>
+<button onclick="toggle(this,'Safe Mode')">Safe Mode<br><small>واجهة فقط</small></button>
+</div>
+<div class="log" id="log">> System started...<br>> Waiting for command...</div>
+<div class="footer">مستقل عن Free Fire — واجهة تجريبية فقط</div>
+</div>
+<script>
+const logBox=document.getElementById("log"),statusBox=document.getElementById("status");
+function addLog(text){const time=new Date().toLocaleTimeString();logBox.innerHTML+="<br>> ["+time+"] "+text;logBox.scrollTop=logBox.scrollHeight}
+function toggle(button,name){button.classList.toggle("active");if(button.classList.contains("active")){addLog(name+" : ON");statusBox.textContent=name+" activated — simulation"}else{addLog(name+" : OFF");statusBox.textContent="لوحة محاكاة مستقلة"}}
+setTimeout(()=>addLog("Interface loaded successfully"),500);
+setTimeout(()=>addLog("12 simulation controls ready"),1000);
+</script>
+</body>
+</html>
